@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  .btn-catalogo{
+    width: 100%;
+    background-color: #F64E4E;
+    color: #fff;
+    border: 0;
+    border-radius: 0px 0px 15px 15px;
+  }
+
+  .titulo4{
+    color:white;
+    background:red;
+    padding:1%;
+  }
+  .previos{
+    background-color: red;
+    padding: 10%;
+  }
+  .next{
+    background-color: red;
+    padding: 10%;
+  }
+  .libros{
+    padding-left: 30%;
+  }
+  .mochilas{
+    padding-left:20%;
+  }
+  
+  .bicicletas{
+   padding-left: 20%;
+   padding-top: 5%;
+  }
+  .camas{
+    padding-left: 20%;
+    padding-top: 5%;
+  }
+  .decoraciones{
+    padding-left: 20%;
+    padding-top: 1%;
+  }
+  .adornos{
+    padding-left: 25%;
+    padding-top: 7%;
+  }
+  p{
+    font-family: Comic Sans MS;
+    color:#EA6052;
+  }
+  .utiles{
+    padding-left: 25%;
+  }
+  

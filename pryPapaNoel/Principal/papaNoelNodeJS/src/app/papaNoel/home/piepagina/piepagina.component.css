@@ -1,0 +1,25 @@
+footer {
+    background-color:#1A1A1A;
+    height: 50%;
+    color: white;
+    padding: 15px;
+    margin-top: 50px;
+  }
+
+  .main1 { 
+    display:flex;
+    margin:0 auto;
+  }
+  
+  a img:hover {
+      color: #fff;
+  }
+  .imagen{
+    padding-left: 21%;
+  }
+  img{
+    border-radius: 40%; 
+  }
+  
+  
+  

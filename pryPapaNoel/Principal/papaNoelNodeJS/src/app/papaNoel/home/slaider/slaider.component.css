@@ -1,0 +1,27 @@
+@import "../../menu/menu.component.css";
+
+.form-c{
+  background-color: rgba(241, 14, 2, 0.986);
+  height: 70px;
+}
+.boder{
+  background-color:rgba(241, 14, 2, 0.986);
+  height: 80px;
+  border-radius:  0% 0% 50% 50%;
+  position: relative;
+}
+.buscador2{
+  margin: auto;
+  background-color: white;
+  height: 35px;
+  width: 80%;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  box-shadow: 0px 3px 6px #918f91;
+}
+h6{
+  font-size:1.5em;
+}
+

@@ -1,0 +1,54 @@
+
+.navbar-navv {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.bg-tred{
+  background-color: rgba(241, 14, 2, 0.986);
+}
+.btn-white{
+  background-color: white;
+  border-radius: 0;
+}
+input .btn-white{
+  padding-left: 30%;
+}
+.buscador{
+  background-color: white;
+  height: 35px;
+  width: 30%;
+  border-radius: 10px;
+}
+
+input{
+  width: 100%;
+	border: none;
+	height: 35px;
+	border-radius: 20px;
+  margin-right:5%;
+  padding-left: 20px;
+}
+.text-lightblue{
+ color: #64BBEC;
+}
+.muvi{
+  left: auto;
+  right: 1rem;
+}
+.link{
+  color: #000;
+  text-decoration: none;
+}
+.shadow-puro{
+
+  box-shadow: 0px 3px 10px  #adadad;
+}
+.f-z{
+  font-size: 100%;
+}
+.menu{
+  float: right;
+}
