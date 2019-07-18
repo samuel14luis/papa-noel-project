@@ -75,7 +75,13 @@ select * from labels;
 Products
 insert into labels (name) values ('Cuadernos'), ('colores'), ('x12'), ('bicolor');
 
-select * from labels;
+select * from Products p inner join labels_has_products h
+on p.idProduct = h.Products_idProduct
+
+select idlabel,name from labels_has_products h
+inner join labels l
+on h.labels_idlabel = l.idlabel
+where h.products_idproduct = 1
 ############################################################
 select * from banner;
 INSERT INTO BANNER (imgURL, active,state,registrationDate) values('imgurl.png',1,1,current_date());
