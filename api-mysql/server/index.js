@@ -34,6 +34,8 @@ app.use('/api/sales/categories',require('./routes/ventas_category_routes'))
 app.use('/api/sales/labels',require('./routes/ventas_label_routes'))
 app.use('/api/products/brands',require('./routes/product_brand_routes'))
 app.use('/api/products',require('./routes/product_routes'))
+app.use('/api/features/types',require('./routes/product_features-type_routes'))
+app.use('/api/features/values',require('./routes/product_features-value_routes'))
 
 //Starting the server - Iniciando el servidor
 app.listen(app.get('port'), () => {
