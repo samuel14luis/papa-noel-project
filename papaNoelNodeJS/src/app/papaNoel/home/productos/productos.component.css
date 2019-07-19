@@ -11,11 +11,11 @@
 }
 .stilo{
   border-radius: 15px;
-  box-shadow: 0px 3px 7px;
+  box-shadow: 0px 3px 7px #a7a7a7;
 }
 footer {
 	background-color:#1A1A1A;
-   height: 50%;
+  height: 50%;
   color: white;
   padding: 15px;
   margin-top: 50px;
@@ -25,13 +25,20 @@ footer {
   display:flex;
   margin:0 auto;
 }
-
-a img:hover {
-    color: #fff;
-}
 .imagen{
   padding-left: 21%;
 }
-img{
-  border-radius: 40%;
+.body{
+  background-color: #f1f1f1;
+}
+.cat-s{
+  margin-left: 4%;
+  font-size: 2em;
+}
+.fz{
+  text-align: center;
+  font-size: 3vmin;
+}
+.fz-c{
+  font-size: 5vmin;
 }

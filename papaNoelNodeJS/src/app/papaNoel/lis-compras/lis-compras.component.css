@@ -1,10 +1,7 @@
-body{
+.body{
   background-color: #f1f1f1;
 }
 .stilo{
   border-radius: 15px;
   box-shadow: 0px 3px 8px;
-}
-.bajar{
-  margin-top: 100px;
 }
