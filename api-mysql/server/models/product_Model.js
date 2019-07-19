@@ -13,7 +13,11 @@ ProductModel.getProducts = (conn, callback) => {
 
 ProductModel.getProductsByCategory = (conn, idCategory, callback) => {
     if (conn) {
-        conn.query('SELECT * FROM PRODUCTS WHERE Product_Category_idCategory=?;', [idCategory], (err, result) => {
+        let query = 'SELECT p.idProduct, p.name, p.img, p.description, b.brandName '+
+        'FROM PRODUCTS p INNER JOIN PRODUCT_BRANDS b '+
+        'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
+        'WHERE Product_Category_idCategory=?;'
+        conn.query(query, [idCategory], (err, result) => {
             if (err) throw err
             callback(err, result)
         })
