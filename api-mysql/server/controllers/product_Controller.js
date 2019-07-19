@@ -18,6 +18,12 @@ ProductController.getProducts = (req, res) => {
     })
 }
 
+ProductController.getProductsByCategory = (req, res) => {
+    ProductModel.getProductsByCategory(conn, req.params.idCategory || req.body.idCategory, (err, data) => {
+        res.json(data)
+    })
+}
+
 ProductController.getProductsInterval = (req, res) => {
     ProductModel.getProductsInterval(conn, req.params.last, req.params.num, (err, data) => {
         res.json(data)
@@ -52,6 +58,26 @@ ProductController.insertProduct = (req, res) => {
             res.json({
                 success: true,
                 msg: 'Product was Inserted',
+                result
+            })
+        }
+    })
+}
+
+ProductController.insertProductDev = (req, res) => {
+    ProductModel.insertProductDev(conn, req.body.productos, (error, result) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                msg: 'Error',
+                result: error
+            })
+            throw error;
+        }
+        if (result) {
+            res.json({
+                success: true,
+                msg: 'Products was Inserted',
                 result
             })
         }

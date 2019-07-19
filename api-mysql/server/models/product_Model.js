@@ -11,6 +11,15 @@ ProductModel.getProducts = (conn, callback) => {
     }
 }
 
+ProductModel.getProductsByCategory = (conn, idCategory, callback) => {
+    if (conn) {
+        conn.query('SELECT * FROM PRODUCTS WHERE Product_Category_idCategory=?;', [idCategory], (err, result) => {
+            if (err) throw err
+            callback(err, result)
+        })
+    }
+}
+
 ProductModel.getProductsInterval = (conn, last, num, callback) => {
     console.log(last + "  -  " + num)
     if (conn) {
@@ -61,6 +70,46 @@ ProductModel.insertProduct = (conn, p, callback) => {
                     result: err
                 })
             }
+        })
+    }
+}
+
+ProductModel.insertProductDev = async function (conn, productos, callback) {
+    if (conn) {
+        let errores = ''
+        let n = 0
+        let q_brands = "SELECT * FROM PRODUCT_BRANDS WHERE idBrand = ?;"
+        let q_category = "SELECT * FROM PRODUCT_CATEGORY WHERE idCategory = ?;"
+        let q_insert = "INSERT INTO PRODUCTS (name,img,description,Product_Brands_idBrand,Product_Category_idCategory) values (?,?,?,?,?);"
+        await productos.forEach(async function (p, i, array) {
+            await conn.query(q_brands, [p.Product_Brands_idBrand], async function (err1, r1) {
+                console.log("new ---uwu tut "+n)
+                if (r1.length > 0) {
+                    await conn.query(q_category, [p.Product_Category_idCategory], async function (err2, r2) {
+                        if (r2.length > 0) {
+                            await conn.query(q_insert, [p.name, p.img, p.description, p.Product_Brands_idBrand, p.Product_Category_idCategory],
+                                (error, result) => {
+                                    console.log("       uwu tut "+n)
+                                    if (error){
+                                        errores += "item "+ i + ": ERROR! - "+ JSON.stringify(error) + "\n"
+                                    } else {
+                                        errores += "item "+ i + ": OK!    - "+ JSON.stringify(result) + "\n"
+                                        n++
+                                    }
+                                    console.log("       uwu tut "+n)
+                                });
+                        } else {
+                            errores += "item "+ i + ": ERROR! - Category was not Found\n"
+                        }
+                    })
+                } else {
+                    errores += "item "+ i + ": ERROR! - Brand was not Found\n"
+                }
+            })
+        });
+        callback(null, {
+            msg: 'Proceso terminado, productos insertados: '+n,
+            resumen: errores
         })
     }
 }

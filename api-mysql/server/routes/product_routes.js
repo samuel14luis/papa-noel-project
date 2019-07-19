@@ -10,9 +10,11 @@ http://localhost:3000/api/products/new
 http://localhost:3000/api/products/add-label/
 */
 router.get('/get/list', p.getProducts)
+router.get('/get/by/:idCategory', p.getProductsByCategory)
 router.get('/get/interval/', p.getProductsInterval)
 router.get('/get/:idProduct', p.getProduct)
 router.post('/new', p.insertProduct)
+router.post('/news', p.insertProductDev)
 router.post('/add-label', p.addLabel)
 
 module.exports = router;
