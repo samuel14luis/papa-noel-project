@@ -101,6 +101,7 @@ footer {
   padding-bottom: 5px;
   bottom: 0;
   display: flex;
+  left: 25%;
 }
 
 .card-desc h3 {
