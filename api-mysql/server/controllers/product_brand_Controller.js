@@ -6,11 +6,11 @@ const BrandModel = require('../models/product_brand_Model')
 
 let BrandController = {};
 /*PRODUCT_BRANDS{idBrand, brandName}
-http://localhost:3000/api/sales/brands/get/list
-http://localhost:3000/api/sales/brands/get/:id
-http://localhost:3000/api/sales/brands/new
-http://localhost:3000/api/sales/brands/delete/
-http://localhost:3000/api/sales/brands/update/name/
+http://localhost:3000/api/products/brands/get/list
+http://localhost:3000/api/products/brands/get/:id
+http://localhost:3000/api/products/brands/new
+http://localhost:3000/api/products/brands/delete/
+http://localhost:3000/api/products/brands/update/name/
 */
 BrandController.getBrands = (req, res) => {
     BrandModel.getBrands(conn, (err, data) => {
