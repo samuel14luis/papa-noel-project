@@ -34,6 +34,9 @@ export class ProductosComponent implements OnInit {
       err=>  console.log(err)
      )
   }
+  holamundo(){
+   alert("Nuevo producto agregado bebecito");
+  }
   
   carouselOptions = {
   

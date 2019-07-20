@@ -15,16 +15,24 @@
 <!--Aqui-->
   <hr class="m-4">
 
-<div class="row px-4 justify-content-center "*ngFor='let producto of productos'>
-  <div class="col-12 col-md-3 bg-white p-4 m-4 stilo">
+<div class="row px-4 justify-content-center ">
+  <div class="col-12 col-md-3 bg-white p-4 m-4 stilo" *ngFor='let producto of productos'>
     <div class="row" >
       <div class="col-6" >
         <h5>{{producto.name}}</h5><!-- 12 bicolor {{productos.description}}-->
-            <h1>{{producto.description}} </h1> <!-- {{productos.Products_Brands_idBrand}}-->
+            <h1>{{producto.description}} </h1>
+            <h1>{{producto.brandName}} </h1>
+            <h1>{{producto.prize}} </h1>  <!-- {{productos.Products_Brands_idBrand}}-->
           </div>
+        
         <div class="col-6">
           <img src="{{producto.img}}" class="d-block w-100" alt="">
           <!-- imagen su url : {{productos.img}} -->
+        </div>
+        <div class="iconos">
+          <h6  class="fas fa-heart corazon "></h6>
+          <h6  class="fas fa-plus-square  mas"></h6>
+          <h6  class="fas fa-shopping-cart carrito" (click)="holamundo()"></h6>
         </div>
       </div>
     </div>
