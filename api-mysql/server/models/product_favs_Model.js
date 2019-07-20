@@ -2,7 +2,14 @@ let FavModel = {};
 
 FavModel.getFavs = (conn, idUser, callback) => {
     if (conn) {
-        conn.query('SELECT * FROM PRODUCTS_FAV WHERE User_idUser=?;',[idUser], (err, result) => {
+        let query = 'SELECT f.User_idUser, p.idProduct, p.name, p.img, p.description, '+
+        'b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock '+
+        'FROM PRODUCTS_FAV f INNER JOIN PRODUCTS p '+
+        'on f.Products_idProduct = p.idProduct INNER JOIN PRODUCT_BRANDS b '+
+        'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
+        'WHERE User_idUser=?;'
+
+        conn.query(query,[idUser], (err, result) => {
             if (err) throw err
             callback(err, result)
         })
