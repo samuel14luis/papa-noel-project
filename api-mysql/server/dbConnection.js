@@ -3,7 +3,7 @@ const mysql = require('mysql');
 module.exports = () => {
     return mysql.createConnection({
         host: 'localhost',
-        port: '3306',
+        port: '3307',
         user: 'root',
         password: 'root',
         database: 'papanoel-store'
