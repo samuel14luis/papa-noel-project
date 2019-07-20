@@ -24,6 +24,17 @@ export class ProductosComponent implements OnInit {
    
     
   }
+  saveproductos(){
+    this.productosService.getinsertaracesta().subscribe(
+      res => {
+        this.productos=res;
+        console.log(res);
+            
+      },
+      err=>  console.log(err)
+    )
+  }
+
   mostrarproductos(id:String){
      this.productosService.getproductosid(id).subscribe(
       res => {
@@ -34,8 +45,8 @@ export class ProductosComponent implements OnInit {
       err=>  console.log(err)
      )
   }
-  holamundo(){
-   alert("Nuevo producto agregado bebecito");
+  holamundo(id:String){
+   alert("Su id es bebecito"+id);
   }
   
   carouselOptions = {

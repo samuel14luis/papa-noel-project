@@ -7,7 +7,7 @@ import { MenuComponent } from './papaNoel/menu/menu.component';
 import { SlaiderComponent } from './papaNoel/home/slaider/slaider.component';
 import { ProductosComponent } from './papaNoel/home/productos/productos.component';
 import { OwlModule } from 'ngx-owl-carousel';
-
+import {FormsModule} from '@angular/forms'
 import {CategoriasService} from './services/categorias.service';
 import {ProductosService} from './services/productos.service';
 
@@ -24,12 +24,13 @@ import {ProductosService} from './services/productos.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OwlModule
+    OwlModule,
+    FormsModule
   ],
   providers: [
     CategoriasService,
     ProductosService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]   
 })
 export class AppModule { }
