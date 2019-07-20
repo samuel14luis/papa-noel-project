@@ -2,7 +2,12 @@ let CartModel = {};
 
 CartModel.getCart = (conn, idUser, callback) => {
     if (conn) {
-        let query = 'SELECT * FROM CART WHERE User_idUser=?;'
+        let query = 'SELECT c.User_idUser, c.Products_idProduct, p.name, p.img, p.description, '+
+        'b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock, c.quantity, c.selected '+
+        'FROM CART c '+
+        'INNER JOIN PRODUCTS p ON c.Products_idProduct = p.idProduct '+
+        'INNER JOIN PRODUCT_BRANDS b ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
+        'WHERE User_idUser=?;'
 
         conn.query(query, [idUser], (err, result) => {
             if (err) throw err
@@ -55,7 +60,19 @@ CartModel.setSelectItem = (conn, idUser, idProduct, selected, callback) => {
             })
         })
     }
+}
 
+CartModel.setSelectForAll = (conn, idUser, selected, callback) => {
+    if (conn) {
+        conn.query("UPDATE CART SET selected=? WHERE User_idUser=?;", [selected, idUser], (error, result) => {
+            if (error) throw error
+            callback(error, {
+                success: true,
+                msg: 'item-select ha sido actualizado en todos los productos.',
+                result
+            })
+        })
+    }
 }
 
 CartModel.setQuantity = (conn, idUser, idProduct, quantity, callback) => {
@@ -79,7 +96,6 @@ CartModel.setQuantity = (conn, idUser, idProduct, quantity, callback) => {
             }
         })        
     }
-
 }
 
 CartModel.removeFromCart = (conn, idUser, idProduct, callback) => {

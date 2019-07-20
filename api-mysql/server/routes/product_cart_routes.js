@@ -12,6 +12,7 @@ http://localhost:3000/api/products/cart/remove
 router.get('/list', cart.getCart)
 router.post('/add', cart.addToCart)
 router.put('/set-select', cart.setSelectItem)
+router.put('/set-select4all', cart.setSelectForAll)
 router.put('/set-quantity', cart.setQuantity)
 router.delete('/remove', cart.removeFromCart)
 

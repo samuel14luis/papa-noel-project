@@ -51,7 +51,27 @@ CartController.setSelectItem = (req, res) => {
         if (result) {
             res.json({
                 success: true,
-                msg: 'Product-selected was modified',
+                msg: 'Product-selected was procesed for modification',
+                result
+            })
+        }
+    })
+}
+
+CartController.setSelectForAll = (req, res) => {
+    CartModel.setSelectForAll(conn, req.body.idUser, req.body.selected, (error, result) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                msg: 'Error',
+                result: error
+            })
+            throw error;
+        }
+        if (result) {
+            res.json({
+                success: true,
+                msg: 'Product-selected was procesed for modification',
                 result
             })
         }
