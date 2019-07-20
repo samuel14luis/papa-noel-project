@@ -9,6 +9,6 @@ http://localhost:3000/api/products/favs/remove
 */
 router.get('/list', fav.getFavs)
 router.post('/add', fav.addToFavs)
-router.post('/remove', fav.removeFromFavs)
+router.delete('/remove', fav.removeFromFavs)
 
 module.exports = router;

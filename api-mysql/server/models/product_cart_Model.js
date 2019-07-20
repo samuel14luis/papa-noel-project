@@ -1,39 +1,34 @@
-let FavModel = {};
+let CartModel = {};
 
-FavModel.getFavs = (conn, idUser, callback) => {
+CartModel.getCart = (conn, idUser, callback) => {
     if (conn) {
-        let query = 'SELECT f.User_idUser, p.idProduct, p.name, p.img, p.description, '+
-        'b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock '+
-        'FROM PRODUCTS_FAV f INNER JOIN PRODUCTS p '+
-        'on f.Products_idProduct = p.idProduct INNER JOIN PRODUCT_BRANDS b '+
-        'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
-        'WHERE User_idUser=1'
+        let query = 'SELECT * FROM CART WHERE User_idUser=?;'
 
-        conn.query(query,[idUser], (err, result) => {
+        conn.query(query, [idUser], (err, result) => {
             if (err) throw err
             callback(err, result)
         })
     }
 }
 
-FavModel.addToFavs = (conn, idProduct, idUser, callback) => {
+CartModel.addToCart = (conn, idUser, idProduct, quantity, callback) => {
     if (conn) {
-        conn.query("SELECT * FROM PRODUCTS WHERE idProduct = ?;", [idProduct], (err, row1) => {
+        conn.query("SELECT * FROM USER WHERE idUser = ?;", [idUser], (err, row1) => {
             if (row1.length > 0) {
-                conn.query("SELECT * FROM USER WHERE idUser = ?;", [idUser], (err, row2) => {
+                conn.query("SELECT * FROM PRODUCTS WHERE idProduct = ? AND stock >=?;", [idProduct, quantity], (err, row2) => {
                     if (row2.length > 0) {
-                        conn.query("INSERT INTO PRODUCTS_FAV (Products_idProduct, User_idUser) VALUES (?,?);", [idProduct, idUser], (error, result) => {
+                        conn.query("INSERT INTO CART (User_idUser, quantity, selected, Products_idProduct) VALUES (?,?,?,?);", [idUser, quantity, 0, idProduct], (error, result) => {
                             if (error) throw error
                             callback(error, {
                                 success: true,
-                                msg: 'Product was added to favs',
+                                msg: 'Product was added to cart',
                                 result
                             })
                         })
                     } else {
                         callback(err, {
                             success: false,
-                            msg: 'User was not Found',
+                            msg: 'Product was not Found',
                             result: err
                         })
                     }
@@ -41,7 +36,7 @@ FavModel.addToFavs = (conn, idProduct, idUser, callback) => {
             } else {
                 callback(err, {
                     success: false,
-                    msg: 'Product was not Found',
+                    msg: 'User was not Found',
                     result: err
                 })
             }
@@ -49,24 +44,62 @@ FavModel.addToFavs = (conn, idProduct, idUser, callback) => {
     }
 }
 
-FavModel.removeFromFavs = (conn, idProduct, idUser, callback) => {
+CartModel.setSelectItem = (conn, idUser, idProduct, selected, callback) => {
     if (conn) {
-        conn.query("SELECT * FROM PRODUCTS WHERE idProduct = ?;", [idProduct], (err, row1) => {
+        conn.query("UPDATE CART SET selected=? WHERE User_idUser=? AND Products_idProduct=?;", [selected, idUser, idProduct], (error, result) => {
+            if (error) throw error
+            callback(error, {
+                success: true,
+                msg: 'item-select ha sido actualizado',
+                result
+            })
+        })
+    }
+
+}
+
+CartModel.setQuantity = (conn, idUser, idProduct, quantity, callback) => {
+    if (conn) {
+        conn.query("SELECT * FROM PRODUCTS WHERE idProduct = ? AND stock >=?;", [idProduct, quantity], (err, row2) => {
+            if (row2.length > 0) {
+                conn.query("UPDATE CART SET quantity=? WHERE User_idUser=? AND Products_idProduct=?;", [quantity, idUser, idProduct], (error, result) => {
+                    if (error) throw error
+                    callback(error, {
+                        success: true,
+                        msg: 'item-quantity ha sido actualizado',
+                        result
+                    })
+                })
+            } else {
+                callback(err, {
+                    success: false,
+                    msg: 'Producto no tiene stock suficiente',
+                    result: err
+                })
+            }
+        })        
+    }
+
+}
+
+CartModel.removeFromCart = (conn, idUser, idProduct, callback) => {
+    if (conn) {
+        conn.query("SELECT * FROM USER WHERE idUser = ?;", [idUser], (err, row1) => {
             if (row1.length > 0) {
-                conn.query("SELECT * FROM USER WHERE idUser = ?;", [idUser], (err, row2) => {
+                conn.query("SELECT * FROM PRODUCTS WHERE idProduct = ?;", [idProduct], (err, row2) => {
                     if (row2.length > 0) {
-                        conn.query("DELETE FROM PRODUCTS_FAV WHERE Products_idProduct = ? AND User_idUser = ?;", [idProduct, idUser], (error, result) => {
+                        conn.query("DELETE FROM CART WHERE Products_idProduct = ? AND User_idUser = ?;", [idProduct, idUser], (error, result) => {
                             if (error) throw error
                             callback(error, {
                                 success: true,
-                                msg: 'Product was removed from favs',
+                                msg: 'Product was removed from cart',
                                 result
                             })
                         })
                     } else {
                         callback(err, {
                             success: false,
-                            msg: 'User was not Found',
+                            msg: 'Product was not Found',
                             result: err
                         })
                     }
@@ -74,7 +107,7 @@ FavModel.removeFromFavs = (conn, idProduct, idUser, callback) => {
             } else {
                 callback(err, {
                     success: false,
-                    msg: 'Product was not Found',
+                    msg: 'User was not Found',
                     result: err
                 })
             }
@@ -82,4 +115,4 @@ FavModel.removeFromFavs = (conn, idProduct, idUser, callback) => {
     }
 }
 
-module.exports = FavModel;
+module.exports = CartModel;

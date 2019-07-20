@@ -7,7 +7,7 @@ FavModel.getFavs = (conn, idUser, callback) => {
         'FROM PRODUCTS_FAV f INNER JOIN PRODUCTS p '+
         'on f.Products_idProduct = p.idProduct INNER JOIN PRODUCT_BRANDS b '+
         'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
-        'WHERE User_idUser=1'
+        'WHERE User_idUser=?;'
 
         conn.query(query,[idUser], (err, result) => {
             if (err) throw err
