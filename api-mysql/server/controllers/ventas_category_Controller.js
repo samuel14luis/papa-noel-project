@@ -9,6 +9,7 @@ let categoryController = {};
 http://localhost:3000/api/sales/categories/get/list
 http://localhost:3000/api/sales/categories/get/:id
 http://localhost:3000/api/sales/categories/new
+http://localhost:3000/api/sales/categories/news
 http://localhost:3000/api/sales/categories/delete/
 http://localhost:3000/api/sales/categories/update/icon/
 */
@@ -42,7 +43,27 @@ categoryController.insertCategory = (req, res) => {
         if (result) {
             res.json({
                 success: true,
-                msg: 'Category Inserted',
+                msg: 'Categoria procesada para ser agregada',
+                result
+            })
+        }
+    })
+}
+
+categoryController.insertCategoryDev = (req, res) => {
+    categoryModel.insertCategoryDev(conn, req.body.categories, (error, result) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                msg: 'Error',
+                result: error
+            })
+            throw error;
+        }
+        if (result) {
+            res.json({
+                success: true,
+                msg: 'Categorias procesadas para ser agregadas',
                 result
             })
         }
