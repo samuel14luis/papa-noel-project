@@ -4,9 +4,11 @@ const router = express.Router();
 const p = require('../controllers/product_Controller');
 /*
 http://localhost:3000/api/products/get/list
+http://localhost:3000/api/products/get/by/:idCategory
 http://localhost:3000/api/products/get/interval/:last&:num
 http://localhost:3000/api/products/get/:idProduct
 http://localhost:3000/api/products/new
+http://localhost:3000/api/products/news
 http://localhost:3000/api/products/add-label/
 */
 router.get('/get/list', p.getProducts)
