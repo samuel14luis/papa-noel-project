@@ -1,0 +1,35 @@
+Para correr el proyecto 
+-  npm run dev
+-  npm run build
+- Conectar con mysql -u root -p
+
+Metodo para insertar otro dato 
+
+Listar Listar todos los Categorias: http://localhost:3000/api/sales/categories/get/list/
+Insertar todos los categorias:http://localhost:3000/api/sales/categories/new/
+Para editar  nombre :http://localhost:3000/api/sales/categories/update/name/
+Para editar  icon :http://localhost:3000/api/sales/categories/update/icon/
+
+
+Listar la base de datos
+- para buscar select *  from product_category;
+- para buscar producto 
+- para insertar una carpeta se necesita ng g s services/categorias
+-----------------------------------------------------------------------Products---------------------------------------
+Enlaces
+  - for list products: http://localhost:3000/api/products/get/list
+  - for insert products:http://localhost:3000/api/products/new
+  - for insert 
+
+
+-----------------------------------------------------------------------Brands---------------------------------------
+Enlaces
+- for insert brands : http://localhost:3000/api/sales/brands/new
+- for list brands http://localhost:3000/api/sales/brands/get/list
+- for edit: http://localhost:3000/api/sales/brands/update/name/
+-----------------------------------------
+
+git push para mandar datos
+git pull actualizando los datos
+
+
