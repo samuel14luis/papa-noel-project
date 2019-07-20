@@ -18,17 +18,17 @@
     <div class="container">
         <div class="row ">
             <div class="col-sm-4 col-md-4 col-lg-3 mb-2 " *ngFor='let producto of productos'>
-                <div class="card-content">
+                <div class="card-content h-auto100" >
                     <div class="card-img p-4 ">
                         <img src="{{producto.img}}" alt="">
                         <span><h4>{{producto.brandName}}</h4></span>
                     </div>
-                    <div class="card-desc">
+                    <div class="card-desc ">
                         <h3>{{producto.name}}</h3>
                         <hr class="m-0">
                         <p class="text-justify">{{producto.description}}</p>
                         <p>Precio: S/.{{producto.prize}}</p>
-                        <div class="text-center">
+                        <div class="text-center abajo">
                           <a href="#" class="btn btn-h-pink"><i  class="fas fa-heart corazon "></i></a>
                           <a href="#" class="btn btn-h-orange"><i  class="fas fa-plus-square  mas"></i></a>
                           <a href="#" class="btn btn-h-green"><i  class="fas fa-shopping-cart carrito"></i></a>
@@ -38,28 +38,29 @@
             </div>
         </div>
     <!-- footer -->
-<footer class="d-none d-md-block">
-  <div class="px-4 py-1">
-    <div class="row">
-      <div class="col-12 col-md-4">
-        <h6 class="text-primary" ><i class="fas fa-home"></i>Direccion: </h6>
-        <h6 class="text-white"> Jr.Castilla Esq. Con vilela N°300</h6> <br>
-        <h6 class="text-primary" ><i class="fas fa-phone-alt"></i> Telefono:</h6>
-        <h6 class="text-white">Fijo: 2353720</h6>
-      </div>
-      <div class="col-12 col-md-4">
-          <div class="pull-right">
-              <a href="https://www.facebook.com/tiendapapanoel/"><h6 class="text-white" class="fab fa-facebook"> Facebook</h6></a>
-                <h6 class="text-white" >Visite Nuestra Pagina de Facebook</h6>
-              </div>
-              <div>
+
+    </div>
+    <footer class="d-none d-md-block">
+      <div class="px-4 py-1">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <h6 class="text-primary" ><i class="fas fa-home"></i>Direccion: </h6>
+            <h6 class="text-white"> Jr.Castilla Esq. Con vilela N°300</h6> <br>
+            <h6 class="text-primary" ><i class="fas fa-phone-alt"></i> Telefono:</h6>
+            <h6 class="text-white">Fijo: 2353720</h6>
+          </div>
+          <div class="col-12 col-md-4">
+              <div class="pull-right">
+                  <a href="https://www.facebook.com/tiendapapanoel/"><h6 class="text-white" class="fab fa-facebook"> Facebook</h6></a>
+                    <h6 class="text-white" >Visite Nuestra Pagina de Facebook</h6>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                    <a href=""><h6 class="text-white" class="fas fa-map-marker"> Ubicanos:</h6></a>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d591.7266568514399!2d-77.76221366063817!3d-10.749800228143544!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910737ef340a5539%3A0xf26162bcfb9d64f1!2sTiendas+Papa+Noel!5e0!3m2!1ses-419!2spe!4v1562988280937!5m2!1ses-419!2spe" width="100%" height="100" frameborder="0" style="border:0" allowfullscreen></iframe>
+                  </div>
               </div>
             </div>
-            <div class="col-md-4">
-                <a href=""><h6 class="text-white" class="fas fa-map-marker"> Ubicanos:</h6></a>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d591.7266568514399!2d-77.76221366063817!3d-10.749800228143544!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910737ef340a5539%3A0xf26162bcfb9d64f1!2sTiendas+Papa+Noel!5e0!3m2!1ses-419!2spe!4v1562988280937!5m2!1ses-419!2spe" width="100%" height="100" frameborder="0" style="border:0" allowfullscreen></iframe>
-              </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+          </footer>

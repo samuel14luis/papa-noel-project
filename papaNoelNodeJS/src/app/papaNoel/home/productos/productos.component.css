@@ -42,6 +42,9 @@ footer {
 
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:400,400i,700,700i');
+.h-auto100{
+  height: 100%;
+}
 
 .details-card {
 	background: #ecf0f1;
@@ -51,6 +54,7 @@ footer {
 	background: #ffffff;
 	border: 4px;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  position: relative;
 }
 
 .card-img {
@@ -70,17 +74,16 @@ footer {
 .card-img span {
 	position: absolute;
     top: 15%;
-    left: 12%;
+    left: 0;
     background: #1ABC9C;
-    padding: 6px;
+    padding: 5px;
     color: #fff;
     font-size: 12px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    transform: translate(-50%,-50%);
+    border-radius: 0px 4px 4px 0px;
+    -webkit-border-radius: 0px 4px 4px 0px;
+    -moz-border-radius: 0px 4px 4px 0px;
+    -ms-border-radius: 0px 4px 4px 0px;
+    -o-border-radius: 0px 4px 4px 0px;
 }
 .card-img span h4{
         font-size: 12px;
@@ -89,7 +92,15 @@ footer {
          line-height: 0;
 }
 .card-desc {
-	padding: 1.25rem;
+  padding: 1.25rem;
+
+}
+.abajo {
+  position: absolute;
+  text-align: center;
+  padding-bottom: 5px;
+  bottom: 0;
+  display: flex;
 }
 
 .card-desc h3 {
