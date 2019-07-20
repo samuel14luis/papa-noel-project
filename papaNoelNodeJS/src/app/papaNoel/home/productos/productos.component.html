@@ -13,31 +13,30 @@
   </owl-carousel>
 
 <!--Aqui-->
-  <hr class="m-4">
-
-<div class="row px-4 justify-content-center ">
-  <div class="col-12 col-md-3 bg-white p-4 m-4 stilo" *ngFor='let producto of productos'>
-    <div class="row" >
-      <div class="col-6" >
-        <h5>{{producto.name}}</h5><!-- 12 bicolor {{productos.description}}-->
-            <h1>{{producto.description}} </h1>
-            <h1>{{producto.brandName}} </h1>
-            <h1>{{producto.prize}} </h1>  <!-- {{productos.Products_Brands_idBrand}}-->
-          </div>
-        
-        <div class="col-6">
-          <img src="{{producto.img}}" class="d-block w-100" alt="">
-          <!-- imagen su url : {{productos.img}} -->
+<hr class="m-4">
+<section class="details-card">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-4 col-md-4 col-lg-3 mb-2 " *ngFor='let producto of productos'>
+                <div class="card-content">
+                    <div class="card-img p-4 ">
+                        <img src="{{producto.img}}" alt="">
+                        <span><h4>{{producto.brandName}}</h4></span>
+                    </div>
+                    <div class="card-desc">
+                        <h3>{{producto.name}}</h3>
+                        <hr class="m-0">
+                        <p class="text-justify">{{producto.description}}</p>
+                        <p>Precio: S/.{{producto.prize}}</p>
+                        <div class="text-center">
+                          <a href="#" class="btn btn-h-pink"><i  class="fas fa-heart corazon "></i></a>
+                          <a href="#" class="btn btn-h-orange"><i  class="fas fa-plus-square  mas"></i></a>
+                          <a href="#" class="btn btn-h-green"><i  class="fas fa-shopping-cart carrito"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="iconos">
-          <h6  class="fas fa-heart corazon "></h6>
-          <h6  class="fas fa-plus-square  mas"></h6>
-          <h6  class="fas fa-shopping-cart carrito" (click)="saveproductos()"></h6>
-        </div>
-      </div>
-    </div>
-    </div>
-
     <!-- footer -->
 <footer class="d-none d-md-block">
   <div class="px-4 py-1">
