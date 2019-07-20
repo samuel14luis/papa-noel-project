@@ -92,6 +92,18 @@ select * from banner;
 INSERT INTO BANNER (imgURL, active,state,registrationDate) values('imgurl.png',1,1,current_date());
 SELECT * FROM BANNER WHERE idBanner = 2 and state=1
 
+SELECT p.idProduct, p.name, p.img, p.description,  b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock '+
+        'FROM PRODUCTS p INNER JOIN PRODUCT_BRANDS b '+
+        'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
+        'WHERE Product_Category_idCategory=?
+
+
+SELECT f.User_idUser, p.idProduct, p.name, p.img, p.description,  
+b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock
+FROM PRODUCTS_FAV f INNER JOIN PRODUCTS p
+on f.Products_idProduct = p.idProduct INNER JOIN PRODUCT_BRANDS b
+ON p.PRODUCT_BRANDS_idBrand = b.idBrand
+WHERE User_idUser=1
 
 insert into user(name, email, password, beginDate, lastLogIn) 
 values("Sam", "luismendoza.samuel@gmail.com", "1234", now(), now())
