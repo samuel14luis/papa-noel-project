@@ -6,6 +6,11 @@ use news_portal;select * from news;
 ###############
 show databases;
 use `papanoel-store` ;
+drop database `papanoel-store` ;
+SELECT p.idProduct, p.name, p.img, p.description, b.brandName
+FROM PRODUCTS p INNER JOIN PRODUCT_BRANDS b
+ON p.PRODUCT_BRANDS_idBrand = b.idBrand
+WHERE Product_Category_idCategory=4
 show tables;
 ############################################################
 insert into product_brands (brandName) values 
@@ -86,3 +91,7 @@ where h.products_idproduct = 1
 select * from banner;
 INSERT INTO BANNER (imgURL, active,state,registrationDate) values('imgurl.png',1,1,current_date());
 SELECT * FROM BANNER WHERE idBanner = 2 and state=1
+
+
+insert into user(name, email, password, beginDate, lastLogIn) 
+values("Sam", "luismendoza.samuel@gmail.com", "1234", now(), now())

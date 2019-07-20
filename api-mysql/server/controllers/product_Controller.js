@@ -42,7 +42,10 @@ ProductController.insertProduct = (req, res) => {
         img: req.body.img,
         description: req.body.description,
         Product_Brands_idBrand: req.body.Product_Brands_idBrand,
-        Product_Category_idCategory: req.body.Product_Category_idCategory
+        Product_Category_idCategory: req.body.Product_Category_idCategory,
+        unitPrize: req.body.unitPrize,
+        unitProfit: req.body.unitProfit,
+        stock: req.body.stock
     }
 
     ProductModel.insertProduct(conn, p, (error, result) => {
