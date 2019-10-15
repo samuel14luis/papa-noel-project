@@ -97,6 +97,11 @@ SELECT p.idProduct, p.name, p.img, p.description,  b.brandName, (p.unitPrize + p
         'ON p.PRODUCT_BRANDS_idBrand = b.idBrand '+
         'WHERE Product_Category_idCategory=?
 
+SELECT c.User_idUser, c.Products_idProduct, p.name, p.img, p.description, b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock, c.quantity, c.selected
+FROM CART c 
+INNER JOIN PRODUCTS p ON c.Products_idProduct = p.idProduct 
+INNER JOIN PRODUCT_BRANDS b ON p.PRODUCT_BRANDS_idBrand = b.idBrand
+WHERE User_idUser=1
 
 SELECT f.User_idUser, p.idProduct, p.name, p.img, p.description,  
 b.brandName, (p.unitPrize + p.unitProfit) as prize, p.stock
