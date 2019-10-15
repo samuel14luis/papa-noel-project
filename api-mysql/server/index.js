@@ -57,10 +57,12 @@ app.use('/api/products/cart', require('./routes/product_cart_routes'))
 app.use('/api/products', require('./routes/product_routes'))
 app.use('/api/features/types', require('./routes/product_features-type_routes'))
 app.use('/api/features/values', require('./routes/product_features-value_routes'))
+app.use('/api/user', require('./routes/user_routes'))
 
 //Starting the server - Iniciando el servidor
 app.listen(app.get('port'), () => {
   console.log(`${colors.green}%s${colors.reset}${colors._blue} %s${colors.reset}`, '⚫ Server on port ', `${app.get('port')} `);
+  console.log(process.env + ' MODE')
   connection.connect((err) => {
     if (err) {
       console.error(`${colors.red}%s${colors.reset}%s`, '⚫ Error connecting: ', err.stack);
